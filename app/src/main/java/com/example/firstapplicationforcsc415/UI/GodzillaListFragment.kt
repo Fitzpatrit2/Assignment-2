@@ -1,60 +1,65 @@
 package com.example.firstapplicationforcsc415.UI
 
 import android.os.Bundle
+import android.view.AttachedSurfaceControl
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.firstapplicationforcsc415.CharacterAdapter
+import com.example.firstapplicationforcsc415.GodzillaCharacters
 import com.example.firstapplicationforcsc415.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [GodzillaListFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class GodzillaListFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_godzilla_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_godzilla_list, container, false)
+
+       // if (arguments != null){
+         //   val name = requireArguments().getString("name")
+           // val heightof = requireArguments().getString("heightof")
+          //  val image = requireArguments().getString("image")
+          //  val firstApperance = requireArguments().getString("firstApperance")
+          //  val powers = requireArguments().getString("powers")
+
+           //  view.findViewById<TextView>(R.id.character_fragement)
+           //
+        //Glide.with(this).load(fragment_character).into(view.findViewById(R.id.godzilla_images))
+       // }
+        val recyclerView = view.findViewById<RecyclerView>(R.id.fragementrecycler)
+
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        val characters = mutableListOf<GodzillaCharacters>()
+
+        for (i in 0..30) {
+            characters.add(createCharacters())
+        }
+
+        val adapter = CharacterAdapter(characters)
+        recyclerView.adapter = adapter
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment GodzillaListFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            GodzillaListFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+    private fun createCharacters() = GodzillaCharacters(
+        name = "Godzilla",
+        heightof = 100,
+        image = R.drawable.godzilla_image,
+        firstAppearance = "1954",
+        powers = "Tail, Atomic Breath",
+
+
+        )
+
 }

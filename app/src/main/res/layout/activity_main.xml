@@ -8,28 +8,27 @@
     tools:context=".MainActivity"
     android:id="@+id/activity_main">
 
-    <TextView
-        android:layout_width="match_parent"
+    <androidx.fragment.app.FragmentContainerView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World, WORDS"
-        android:padding="12dp"
-        android:layout_margin="12dp"
-
-        />
-
-    <Button
+        android:id="@+id/fragment_container_view_tag"
+        tools:context=".UI.CharacterFragment"
+        android:name="com.example.firstapplicationforcsc415.UI.GodzillaListFragment"
+        tools:layout="@layout/fragment_character" />
+    <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <androidx.recyclerview.widget.RecyclerView
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        android:id="@+id/godzilla_image"
+        android:src="@drawable/godzilla_image"
+        android:contentDescription="This is Godzilla, King of the Monsters" />
+    <TextView
+        android:id="@+id/godzilla_name"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@id/recycler_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        android:text="godzilla" />
 
-        />
 </LinearLayout>

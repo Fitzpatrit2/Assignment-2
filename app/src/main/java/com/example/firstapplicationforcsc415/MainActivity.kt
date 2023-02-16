@@ -3,36 +3,31 @@ package com.example.firstapplicationforcsc415
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.firstapplicationforcsc415.UI.GodzillaListFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+             add(R.id.fragment_container_view_tag, GodzillaListFragment())
+                addToBackStack(null)
+         }
 
 
-        recyclerView.layoutManager = LinearLayoutManager(this)
-
-        val characters = mutableListOf<Godzilla>()
-
-        for (i in 0..30) {
-            characters.add(createCharacters())
-        }
-
-        val adapter = CharacterAdapter(characters)
-        recyclerView.adapter = adapter
     }
 
-    private fun createCharacters() = Godzilla (
+    private fun createCharacters() = GodzillaCharacters (
         name = "Godzilla",
         heightof = 100,
         image = R.drawable.godzilla_image,
         firstAppearance = "1954",
         powers = "Tail, Atomic Breath",
-
 
     )
 

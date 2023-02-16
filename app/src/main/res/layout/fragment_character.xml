@@ -3,12 +3,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.CharacterFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".UI.CharacterFragment"
+    android:id="@+id/fragment_character_container"
+    >
 
-    <!-- TODO: Update blank fragment layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            android:id="@+id/godzilla_images"
+            android:src="@drawable/godzilla_image"
+            />
+    <TextView
+        android:id="@+id/godzilla_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        android:text="godzilla" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/godzilla_name"
+        app:layout_constraintTop_toBottomOf="@+id/godzilla_name"
+        android:text="100m"
+        android:id="@+id/godzilla_height"
+        />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
+        app:layout_constraintTop_toBottomOf="@id/godzilla_height"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="1954"
+        android:id="@+id/godzillafirstapperance"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Tail, Atomic Breath"
+        app:layout_constraintStart_toStartOf="@id/godzillafirstapperance"
+        app:layout_constraintTop_toBottomOf="@id/godzilla_name"
+        android:id="@+id/godzilla_powers"
+        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/godzilla_powers"
+            app:layout_constraintTop_toBottomOf="@id/godzilla_powers"
+            android:text="This is the king of the monsters. Towering at a height of 100m, this create is capable of extreme violence and destruction.
+            Caution is advised when the creature shows up at any location. "/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
