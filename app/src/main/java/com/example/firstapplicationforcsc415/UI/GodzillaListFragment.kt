@@ -1,17 +1,14 @@
 package com.example.firstapplicationforcsc415.UI
 
 import android.os.Bundle
-import android.view.AttachedSurfaceControl
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.firstapplicationforcsc415.CharacterAdapter
-import com.example.firstapplicationforcsc415.GodzillaCharacters
+import com.example.firstapplicationforcsc415.Godzilla
 import com.example.firstapplicationforcsc415.R
 
 
@@ -40,7 +37,7 @@ class GodzillaListFragment : Fragment() {
 
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        val characters = mutableListOf<GodzillaCharacters>()
+        val characters = mutableListOf<Godzilla>()
 
         for (i in 0..30) {
             characters.add(createCharacters())
@@ -52,7 +49,7 @@ class GodzillaListFragment : Fragment() {
         return view
     }
 
-    private fun createCharacters() = GodzillaCharacters(
+    private fun createCharacters() = Godzilla(
         name = "Godzilla",
         heightof = 100,
         image = R.drawable.godzilla_image,
